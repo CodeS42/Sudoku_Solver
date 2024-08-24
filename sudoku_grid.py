@@ -242,14 +242,7 @@ class SudokuGrid:
         return None
 
     def handle_grid(self, i, j):
-        if len(self.candidates[i][j]) == 1 and not self.grid[i][j].isdigit():
-            if (self.check_rows(self.candidates[i][j][0], i) and self.check_columns(self.candidates[i][j][0], j) and self.check_subgrids(self.candidates[i][j][0], i, j)):
-                self.grid[i][j] = self.candidates[i][j][0]
-            else:
-                return None
-            if self.set_candidates() == False:
-                return None
-        elif len(self.candidates[i][j]) > 1:
+        if len(self.candidates[i][j]) > 1:
             for nb in self.candidates[i][j]:
                 copy_obj = None
                 copy_obj = copy.deepcopy(self)
